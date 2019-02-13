@@ -1,6 +1,6 @@
 {
   "name": "@nkshio/rangecollection",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Add, remove, print from a collection of numeric ranges ",
   "main": "./lib/index.js",
   "scripts": {
