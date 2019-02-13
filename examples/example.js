@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const RangeCollection = require('../lib');
 
+// Example run
 const rc = new RangeCollection();
 
 rc.add([1, 5]);
@@ -27,26 +28,18 @@ rc.add([3, 8]);
 rc.print();
 // Should display: [1, 8) [10, 21)
 
-rc.add([5, 12]);
+rc.remove([10, 10]);
 rc.print();
-// Should display: [1, 21)
+// Should display: [1, 8) [10, 21)
 
-rc.add([40, 50]);
+rc.remove([10, 11]);
 rc.print();
-// Should display: [1, 21) [40, 50)
+// Should display: [1, 8) [11, 21)
 
-// rc.remove([10, 10]);
-// rc.print();
-// // Should display: [1, 8) [10, 21)
+rc.remove([15, 17]);
+rc.print();
+// Should display: [1, 8) [11, 15) [17, 21)
 
-// rc.remove([10, 11]);
-// rc.print();
-// // Should display: [1, 8) [11, 21)
-
-// rc.remove([15, 17]);
-// rc.print();
-// // Should display: [1, 8) [11, 15) [17, 21)
-
-// rc.remove([3, 19]);
-// rc.print();
-// // Should display: [1, 3) [19, 21)
+rc.remove([3, 19]);
+rc.print();
+// Should display: [1, 3) [19, 21)

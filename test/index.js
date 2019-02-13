@@ -84,6 +84,60 @@ describe('RangeCollection', () => {
 		});
 	});
 
+	describe('#remove()', () => {
+		beforeEach(() => {
+			data = new RangeCollection();
+
+			data.add([10, 100]).add([200, 300]);
+			assert.strictEqual(data.toString(), '[10, 100) [200, 300)');
+		});
+
+		it('should NOT remove an invalid range class (1)', function() {
+			data.remove([5, 1]);
+			assert.strictEqual(data.toString(), '[10, 100) [200, 300)');
+		});
+
+		it('should NOT remove an invalid range class (2)', function() {
+			data.remove([5]);
+			assert.strictEqual(data.toString(), '[10, 100) [200, 300)');
+		});
+
+		it('should NOT remove an empty range', function() {
+			data.remove([300, 300]);
+			assert.strictEqual(data.toString(), '[10, 100) [200, 300)');
+		});
+
+		it('should NOT remove a non-existing range', function() {
+			data.remove([150, 170]);
+			assert.strictEqual(data.toString(), '[10, 100) [200, 300)');
+		});
+
+		it('should remove a complete range from the collection', function() {
+			data.remove([150, 400]);
+			assert.strictEqual(data.toString(), '[10, 100)');
+		});
+
+		it('should split an existing range', function() {
+			data.remove([40, 50]);
+			assert.strictEqual(data.toString(), '[10, 40) [50, 100) [200, 300)');
+		});
+
+		it('should remove from the beginning of an existing range', function() {
+			data.remove([150, 250]);
+			assert.strictEqual(data.toString(), '[10, 100) [250, 300)');
+		});
+
+		it('should remove from the end of an existing range', function() {
+			data.remove([250, 350]);
+			assert.strictEqual(data.toString(), '[10, 100) [200, 250)');
+		});
+
+		it('should remove from multiple ranges in the collection', function() {
+			data.remove([50, 250]);
+			assert.strictEqual(data.toString(), '[10, 50) [250, 300)');
+		});
+	});
+
 	describe('#print()', () => {
 		before(() => {
 			data = new RangeCollection();
