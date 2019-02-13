@@ -1,6 +1,6 @@
 {
   "name": "@nkshio/rangecollection",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Add, remove, print from a collection of numeric ranges ",
   "main": "./lib/index.js",
   "scripts": {
@@ -37,7 +37,7 @@
     "print"
   ],
   "author": "Ankush Mehta <mail@nksh.io> (https://nksh.io)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nkshio/RangeCollection/issues"
   },
